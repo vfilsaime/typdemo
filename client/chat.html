@@ -2,9 +2,9 @@
 	
 	{{#if currentUser}}
 	<form id="chatform">
-		Name: <input type="text" id="Name" placeholder="Enter your chat text here" size="100%"> <br>
-		TYP Year: <input type="text" id="TYP Year" placeholder="Enter your chat text here" size="100%"> <br>
-		Hometown: <input type="text" id="Hometown" placeholder="Enter your chat text here" size="100%"> <br>
+		Name: <input type="text" id="name" placeholder="Enter your chat text here" size="100%"> <br>
+		TYP Year: <input type="text" id="typyear" placeholder="Enter your chat text here" size="100%"> <br>
+		Hometown: <input type="text" id="hometown" placeholder="Enter your chat text here" size="100%"> <br>
 		<input type="submit">
 
 	</form>
@@ -27,6 +27,11 @@
 
 <template name="chatitem">
 	<tr>
-		<td>{{who}} said </td> <td>{{what}}</td><td> at {{when}}</td>
+		<td>{{who}} said </td>
+		 <td>{{name}}</td>
+		 <td> at {{when}}</td>
+		 <td> {{typyear}}</td>
+		 <td>{{hometown}}</td>
+
 	</tr>
 </template>
