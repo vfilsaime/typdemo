@@ -1,7 +1,9 @@
 
 Accounts.ui.config({
     requestPermissions: {},
-    extraSignupFields: [{
+    extraSignupFields: [
+
+    {
         fieldName: 'firstName',
         fieldLabel: 'First name',
         inputType: 'text',
@@ -14,12 +16,21 @@ Accounts.ui.config({
             return true;
           }
         }
-    }, {
+    }, 
+
+    {
         fieldName: 'lastName',
         fieldLabel: 'Last name',
         inputType: 'text',
         visible: true,
-    }, {
+    }, 
+
+    {fieldName: 'typyear',
+        fieldLabel: 'TYP Year',
+        inputType: 'text',
+        visible: true,
+    },
+    {
         fieldName: 'gender',
         showFieldLabel: false,      // If true, fieldLabel will be shown before radio group
         fieldLabel: 'Gender',
@@ -36,7 +47,11 @@ Accounts.ui.config({
             checked: 'checked'
         }],
         visible: true
-    }, {
+    },
+
+
+
+     {
         fieldName: 'country',
         fieldLabel: 'Country',
         inputType: 'select',
@@ -52,7 +67,11 @@ Accounts.ui.config({
             value: 'es',
         }],
         visible: true
-    }, {
+    },
+
+
+     {
+
         fieldName: 'terms',
         fieldLabel: 'I accept the terms and conditions',
         inputType: 'checkbox',
