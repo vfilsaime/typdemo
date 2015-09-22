@@ -14,7 +14,14 @@
 	
 	<h2>Showing the last 10 of {{numchats}} chats</h2>
   <table class="table table-bordered">
-	  <tbody>
+  	<thead>
+  		<tr>
+  			<td>Who</td>
+  			<td>Major</td>
+  			<td>When</td>
+  		</tr>
+  	</thead>
+	 <tbody>
 	{{#each chatlines}}
 	{{> chatitem}}
 	{{/each}}
