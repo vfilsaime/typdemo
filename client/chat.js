@@ -6,7 +6,7 @@ Template.chat.events({
 		var name = $("#name") . val() ; 
 		console.log(name) ; 
 		
-		var typyear = $("#typyear") . val() ; 
+		var major = $("#major") . val() ; 
 		console.log(name) ; 
 
 		var hometown = $("#hometown") . val() ; 
