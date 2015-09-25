@@ -1,4 +1,44 @@
 <template name="events">
+	
+	{{#if currentUser}}
+	<form id="chatform">
+		Name: <input type="text" id="eventname" placeholder="Enter your chat text here" size="100%"> <br>
+		Major: <input type="text" id="when" placeholder="Enter your chat text here" size="100%"> <br>
+		Hometown: <input type="text" id="where" placeholder="Enter your chat text here" size="100%"> <br>
+		<input type="submit">
 
-	hi
+	</form>
+	{{else}}
+	You must be signed in to post comments!
+	{{/if}}
+	
+	<h2>Showing the last 10 of {{numchats}} chats</h2>
+  <table class="table table-bordered">
+  	<thead>
+  		<tr>
+  			<td>Event</td>
+  			<td>When</td>
+  			<td>Where</td>
+  		</tr>
+  	</thead>
+	 <tbody>
+	{{#each chatlines}}
+	{{> chatitem}}
+	{{/each}}
+</tbody>
+</table>
+
+
+
+</template>
+
+<template name="chatitem">
+	<tr>
+		<td>{{Event}} said </td>
+		 <td>{{eventname}}</td>
+		 <td> at {{when}}</td>
+		 <td> {{when}}</td>
+		 <td>{{where}}</td>
+
+	</tr>
 </template>
