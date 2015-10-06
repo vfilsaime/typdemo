@@ -2,9 +2,9 @@
 	
 	{{#if currentUser}}
 	<form id="chatform">
-		Name: <input type="text" id="eventname" placeholder="Enter your chat text here" size="100%"> <br>
-		Major: <input type="text" id="when" placeholder="Enter your chat text here" size="100%"> <br>
-		Hometown: <input type="text" id="where" placeholder="Enter your chat text here" size="100%"> <br>
+		Event: <input type="text" id="eventname" placeholder="Enter your chat text here" size="100%"> <br>
+		When: <input type="text" id="when" placeholder="Enter your chat text here" size="100%"> <br>
+		Where: <input type="text" id="where" placeholder="Enter your chat text here" size="100%"> <br>
 		<input type="submit">
 
 	</form>
@@ -12,7 +12,7 @@
 	You must be signed in to post comments!
 	{{/if}}
 	
-	<h2>Showing the last 10 of {{numchats}} chats</h2>
+	<h2>Showing upcoming {{numchats}} events</h2>
   <table class="table table-bordered">
   	<thead>
   		<tr>
