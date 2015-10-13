@@ -1,43 +1,47 @@
 Template.events.events({
-	"submit #chatform": function(event){
+	"submit #eventsform": function(event){
 		
 		event.preventDefault();
 		
-		var Events = $("#Events") . val() ; 
-		console.log(name) ; 
+		var eventname = $("#eventname").val(); 
+		console.log(eventname) ; 
 		
-		var when = $("#when") . val() ; 
-		console.log(name) ; 
+		var when = $("#when").val(); 
+		console.log(when); 
 
-		var Where = $("#Where") . val() ; 
-		console.log(name) ; 
+		var where = $("#where").val(); 
+		console.log(where); 
 		
 		
-		$("#chatinput").val("");
+		$("#eventname").val("");
+		$("#when").val("");
+		$("#where").val("");
 
-		var profile = Meteor.user().event;
+
+
+		var profile = Meteor.user().profile;
 		
-		var chatline = 
+		var eventsline = 
 		  	{
 				uid:Meteor.userId(),  
 				who:profile["firstName"]+" "+profile["lastName"], 
-				name:name,
-				typyear:typyear,
-				hometown:hometown,
-				when: new Date()
+				eventname:eventname,
+				when:when,
+				where:where
+				
 			};
 			
-		console.dir(chatline);
+		console.dir(eventsline);
 		
-		ChatLines.insert(chatline);
+		EventsLines.insert(eventsline);
 	}
 });
 
 Template.events.helpers({
-	chatlines: function(){
-		return ChatLines.find({},{limit:10, sort:{when:-1}});
+	eventslines: function(){
+		return EventsLines.find({},{limit:10, sort:{when:-1}});
 	},
-	numchats: function(){
-		return ChatLines.find().count();
+	numevents: function(){
+		return EventsLines.find().count();
 	}
 });

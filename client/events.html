@@ -1,7 +1,7 @@
 <template name="events">
 	
 	{{#if currentUser}}
-	<form id="chatform">
+	<form id="eventsform">
 		Event: <input type="text" id="eventname" placeholder="Enter your chat text here" size="100%"> <br>
 		When: <input type="text" id="when" placeholder="Enter your chat text here" size="100%"> <br>
 		Where: <input type="text" id="where" placeholder="Enter your chat text here" size="100%"> <br>
@@ -12,18 +12,19 @@
 	You must be signed in to post comments!
 	{{/if}}
 	
-	<h2>Showing upcoming {{numchats}} events</h2>
+	<h2>Showing upcoming {{numevents}} events</h2>
   <table class="table table-bordered">
   	<thead>
   		<tr>
+  			<td>Name</td>
   			<td>Event</td>
   			<td>When</td>
   			<td>Where</td>
   		</tr>
   	</thead>
 	 <tbody>
-	{{#each chatlines}}
-	{{> chatitem}}
+	{{#each eventslines}}
+	{{> eventsitem}}
 	{{/each}}
 </tbody>
 </table>
@@ -32,13 +33,12 @@
 
 </template>
 
-<template name="chatitem">
+<template name="eventsitem">
 	<tr>
-		<td>{{Event}} said </td>
+		<td>{{who}} said </td>
 		 <td>{{eventname}}</td>
 		 <td> at {{when}}</td>
-		 <td> {{when}}</td>
-		 <td>{{where}}</td>
+		<td>{{where}}</td>
 
 	</tr>
 </template>

@@ -22,7 +22,7 @@ Template.chat.events({
 				uid:Meteor.userId(),  
 				who:profile["firstName"]+" "+profile["lastName"], 
 				name:name,
-				typyear:typyear,
+				major:major,
 				hometown:hometown,
 				when: new Date()
 			};

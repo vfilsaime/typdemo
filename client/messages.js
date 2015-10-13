@@ -1,5 +1,5 @@
-Template.chat.events({
-	"submit #chatform": function(event){
+Template.messages.events({
+	"submit #messagesform": function(event){
 		
 		event.preventDefault();
 		
@@ -13,7 +13,7 @@ Template.chat.events({
 		console.log(name) ; 
 		
 		
-		$("#chatinput").val("");
+		$("#messagesinput").val("");
 
 		var profile = Meteor.user().profile;
 		
@@ -27,17 +27,17 @@ Template.chat.events({
 				when: new Date()
 			};
 			
-		console.dir(chatline);
+		console.dir(messagesline);
 		
-		ChatLines.insert(chatline);
+		MessagesLines.insert(messagesline);
 	}
 });
 
-Template.chat.helpers({
-	chatlines: function(){
-		return ChatLines.find({},{limit:10, sort:{when:-1}});
+Template.messages.helpers({
+	messageslines: function(){
+		return messagesLines.find({},{limit:10, sort:{when:-1}});
 	},
 	numchats: function(){
-		return ChatLines.find().count();
+		return MessagesLines.find().count();
 	}
 });
