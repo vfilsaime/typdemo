@@ -12,7 +12,7 @@
 	You must be signed in to post comments!
 	{{/if}}
 	
-	<h2>Showing the last 10 of {{numchats}} chats</h2>
+	<h2>Showing the last 10 of {{nummesaages}} messages</h2>
   <table class="table table-bordered">
   	<thead>
   		<tr>
@@ -22,8 +22,8 @@
   		</tr>
   	</thead>
 	 <tbody>
-	{{#each chatlines}}
-	{{> chatitem}}
+	{{#each messagelines}}
+	{{> messageitem}}
 	{{/each}}
 </tbody>
 </table>
