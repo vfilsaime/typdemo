@@ -17,7 +17,7 @@ Template.messages.events({
 
 		var profile = Meteor.user().profile;
 		
-		var chatline = 
+		var messageline = 
 		  	{
 				uid:Meteor.userId(),  
 				who:profile["firstName"]+" "+profile["lastName"], 
@@ -37,7 +37,7 @@ Template.messages.helpers({
 	messageslines: function(){
 		return messagesLines.find({},{limit:10, sort:{when:-1}});
 	},
-	numchats: function(){
+	nummessages: function(){
 		return MessagesLines.find().count();
 	}
 });
