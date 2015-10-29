@@ -1,47 +1,92 @@
 Template.events.events({
-	"submit #eventsform": function(event){
+	"submit #eventform": function(event){
 		
 		event.preventDefault();
 		
-		var eventname = $("#eventname").val(); 
-		console.log(eventname) ; 
+		var heading = $("#heading").val();
+		var date = $("#date_time").val();
+		var info = $("#info").val();
+		var location = $("#location").val();
 		
-		var when = $("#when").val(); 
-		console.log(when); 
-
-		var where = $("#where").val(); 
-		console.log(where); 
-		
-		
-		$("#eventname").val("");
-		$("#when").val("");
-		$("#where").val("");
-
-
+		$("#heading").val("");
+		$("#date_time").val("");
+		$("#info").val("");
+		$("#location").val("");
 
 		var profile = Meteor.user().profile;
 		
-		var eventsline = 
-		  	{
-				uid:Meteor.userId(),  
-				who:profile["firstName"]+" "+profile["lastName"], 
-				eventname:eventname,
-				when:when,
-				where:where
-				
-			};
-			
-		console.dir(eventsline);
-		
-		EventsLines.insert(eventsline);
+		var event = {
+			uid:Meteor.userId(),  
+			name:profile["firstName"]+" "+profile["lastName"],
+			info:info,
+			heading:heading,
+			location:location,
+			attending:[],
+			notattending:[],
+			when: date
+		};		
+		Events.insert(event);
 	}
 });
 
 Template.events.helpers({
-	eventslines: function(){
-		return EventsLines.find({},{limit:10, sort:{when:-1}});
+	events: function(){
+		return Events.find({},{sort:{when:-1}});
 	},
 	numevents: function(){
-		return EventsLines.find().count();
+		return Events.find().count();
 	}
+});
+
+Template.event.helpers({
+	attending_count: function(){
+		return this.attending.length;
+	},
+	notattending_count: function(){
+		return this.notattending.length;
+	},
+  	authorized: function(){
+	    return this.uid==Meteor.userId();
+	  }
+});
+
+Template.event.events({
+	"click #attending": function () {
+      var attending = this.attending;
+      var index = attending.indexOf(Meteor.userId());
+      if (index < 0) {
+      	attending.push(Meteor.userId());
+      }
+      var notattending = this.notattending;
+      index = notattending.indexOf(Meteor.userId());
+      if (index > -1) {
+      	notattending.splice(index, 1);
+      }
+      Events.update(this._id, {
+  		$set: {attending:attending,notattending:notattending}
+  	  });
+    },
+
+	"click #notattending": function () {
+      var notattending = this.notattending;
+      var index = notattending.indexOf(Meteor.userId());
+      if (index < 0) {
+      	notattending.push(Meteor.userId());
+      }
+      var attending = this.attending;
+      index = attending.indexOf(Meteor.userId());
+      if (index > -1) {
+      	attending.splice(index, 1);
+      }
+      Events.update(this._id, {
+  		$set: {attending:attending,notattending:notattending}
+  	  });
+    },
+    "click #delete": function () {
+    	Events.remove(this._id);
+    }
+});
+
+Template.events.onRendered(function() {
+    this.$('.datetimepicker').datetimepicker();
 });

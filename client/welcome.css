@@ -1,12 +1,15 @@
 #welcome {
-	background: url(images/mktyp.jpg);
+	background-image:url("mktyppic.jpg"); 
 	background-repeat: no-repeat;
+	background-size:cover;
+	min-height: 800px;
 }
 
 p#a {
 	color: gold;
 	font:bold 20pt times;
-	
-
+}
+.jumbotron:not(h1){
+	opacity: 0.5;
 }
 
