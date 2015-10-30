@@ -22,7 +22,6 @@ Template.events.events({
 			heading:heading,
 			location:location,
 			attending:[],
-			notattending:[],
 			when: date
 		};		
 		Events.insert(event);
@@ -42,9 +41,6 @@ Template.event.helpers({
 	attending_count: function(){
 		return this.attending.length;
 	},
-	notattending_count: function(){
-		return this.notattending.length;
-	},
   	authorized: function(){
 	    return this.uid==Meteor.userId();
 	  }
@@ -57,29 +53,19 @@ Template.event.events({
       if (index < 0) {
       	attending.push(Meteor.userId());
       }
-      var notattending = this.notattending;
-      index = notattending.indexOf(Meteor.userId());
-      if (index > -1) {
-      	notattending.splice(index, 1);
-      }
       Events.update(this._id, {
-  		$set: {attending:attending,notattending:notattending}
+  		$set: {attending:attending}
   	  });
     },
 
 	"click #notattending": function () {
-      var notattending = this.notattending;
-      var index = notattending.indexOf(Meteor.userId());
-      if (index < 0) {
-      	notattending.push(Meteor.userId());
-      }
       var attending = this.attending;
       index = attending.indexOf(Meteor.userId());
       if (index > -1) {
       	attending.splice(index, 1);
       }
       Events.update(this._id, {
-  		$set: {attending:attending,notattending:notattending}
+  		$set: {attending:attending}
   	  });
     },
     "click #delete": function () {
