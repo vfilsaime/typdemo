@@ -1,5 +1,14 @@
 <template name="profile">
-	
-	<h1>PROFILE PAGE FOR LOGGED IN USER</h1>
+	<div class="row jumbotron">
+		<div class="col-sm-4">
+			<img src="profile.png" class="img-responsive img-thumbnail" style="width:250px">
+		</div>
+		<div class="col-sm-8">
+		<h1>Full Name</h1>
+		<p><strong>TYP Year: </strong>2014</p>
+		<p><strong>Biography: </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+		<button type="button" href="{{pathFor 'newsfeed'}}" title="Edit Profile" class="btn btn-primary btn-lg pull-right"><i class="fa fa-pencil-square-o"></i> Edit Profile</button>
+		</div>
+	</div>
 
 </template>
