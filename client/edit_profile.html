@@ -1,0 +1,31 @@
+<template name="editProfile">
+	<div class="jumbotron">
+		<form id="edit_profileform">
+			<div class="input-group">
+			  <span class="input-group-addon">First Name</span>
+			  <input type="text" id="firstName" value="{{getProfile.firstName}}" class="form-control">
+			</div>
+			<div class="input-group">
+			  <span class="input-group-addon">Last Name</span>
+			  <input type="text" id="lastName" value="{{getProfile.lastName}}" class="form-control">
+			</div>
+			<div class="input-group">
+			  <span class="input-group-addon">TYP Year</span>
+			  <input type="text" id="typyear" value="{{getProfile.typyear}}" class="form-control">
+			</div>
+			<div class="input-group">
+			  <span class="input-group-addon">Biography</span>
+			  <textarea id="bio" value="{{getProfile.bio}}" placeholder="Type your bio text" class="form-control"></textarea>
+			</div>
+			<div class="input-group">
+			  <span class="input-group-addon">Profile Photo Link</span>
+			  <input type="text" id="image_url" value="{{getProfile.image_url}}" placeholder="Enter a web link for your profile photo" class="form-control">
+			</div>
+			<div class="input-group text-center">
+			  <button type="submit" class="btn btn-success"><i class="fa fa-paper-plane-o"></i> Update Profile</button>
+			</div>
+		</form>
+
+	</div>
+
+</template>

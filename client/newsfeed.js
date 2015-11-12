@@ -37,7 +37,7 @@ Template.newsfeed.helpers({
 	}
 });
 
-Template.news.helpers({
+Template.news_item.helpers({
 	attending_count: function(){
 		return this.attending.length;
 	},
@@ -46,7 +46,7 @@ Template.news.helpers({
 	  }
 });
 
-Template.event.events({
+Template.news_item.events({
 	"click #attending": function () {
       var attending = this.attending;
       var index = attending.indexOf(Meteor.userId());
@@ -71,8 +71,4 @@ Template.event.events({
     "click #delete": function () {
     	Events.remove(this._id);
     }
-});
-
-Template.events.onRendered(function() {
-    this.$('.datetimepicker').datetimepicker();
 });

@@ -1,7 +1,7 @@
 <template name="newsfeed">
 	
 	{{#if currentUser}}
-	<form id="eventform" class="bg-info">
+	<form id="newsform" class="bg-info">
 		<div class="input-group">
 		  <span class="input-group-addon">Event Title</span>
 		  <input type="text" id="heading" class="form-control">
@@ -43,7 +43,7 @@
 	{{/if}}
 </template>
 
-<template name="event">
+<template name="news_item">
 	<div class="list-group-item">
 	<h5 class="list-group-item-heading">{{heading}}</h5>
     <p class="list-group-item-text">{{info}}</p>

@@ -14,6 +14,7 @@ Template.events.events({
 		$("#location").val("");
 
 		var profile = Meteor.user().profile;
+
 		
 		var event = {
 			uid:Meteor.userId(),  
@@ -30,6 +31,8 @@ Template.events.events({
 
 Template.events.helpers({
 	events: function(){
+		var profile = Meteor.user().profile;
+		console.dir(profile);
 		return Events.find({},{sort:{when:-1}});
 	},
 	numevents: function(){
