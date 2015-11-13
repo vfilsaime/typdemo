@@ -19,5 +19,6 @@ Template.editProfile.events({
 		profile.image_url = $("#image_url").val();
 
 		Meteor.users.update(Meteor.userId(), {$set: {profile: profile}});
+		Router.go('/profile');
 	}
 });
