@@ -1,7 +1,7 @@
 <template name="profile">
 	<div class="row jumbotron">
 		<div class="col-sm-4">
-			{{#if getProfile.bio}}
+			{{#if getProfile.image_url}}
 				<img src="{{getProfile.image_url}}" class="img-responsive img-thumbnail" style="width:250px">
 			{{else}}
 				<p class="bg-info">No profile photo URL, please click on 'Edit Profile'</p>
