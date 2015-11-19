@@ -1,4 +1,5 @@
 <template name="profile">
+	{{#if currentUser}}
 	<div class="row jumbotron">
 		<div class="col-sm-4">
 			{{#if getProfile.image_url}}
@@ -18,5 +19,11 @@
 		<a role="button" href="{{pathFor 'edit_profile'}}" title="Edit Profile" class="btn btn-primary btn-lg pull-right"><i class="fa fa-pencil-square-o"></i> Edit Profile</a>
 		</div>
 	</div>
+	{{else}}
+	<div class="alert alert-danger alert-dismissible" role="alert">
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	  <i class="fa fa-info-circle red"></i> You must be logged in!
+	</div>
+	{{/if}}
 
 </template>

@@ -1,22 +1,11 @@
-<template name="newsfeed">
+<template name="newsPage">
 	
 	{{#if currentUser}}
 	<form id="newsform" class="bg-info">
+	
 		<div class="input-group">
-		  <span class="input-group-addon">Event Title</span>
-		  <input type="text" id="heading" class="form-control">
-		</div>
-		<div class="input-group">
-		  <span class="input-group-addon">Location</span>
-		  <input type="text" id="location" class="form-control">
-		</div>
-		<div class="input-group datetimepicker">
-		    <span class="input-group-addon"><i class="fa fa-calendar"></i> Date & Time</span>
-		    <input class="set-due-date form-control" id="date_time" placeholder="Click on the calendar icon then pick date and time." type="text"/>
-		  </div>
-		<div class="input-group">
-		  <span class="input-group-addon">Info</span>
-		  <textarea id="info" class="form-control"></textarea>
+		  <span class="input-group-addon">New Post</span>
+		  <textarea id="New_Post" class="form-control"></textarea>
 		</div>
 		<div class="input-group text-center">
 		  <button type="submit" class="btn btn-success"><i class="fa fa-paper-plane-o"></i> Submit</button>
@@ -26,11 +15,11 @@
 	<br>
 	<div class="panel panel-primary">
 	  <div class="panel-heading">
-	  	<h5>Events {{numevents}}</h5>
+	  	<h5>News Posts {{numposts}}</h5>
 	  </div>
 	  <div class="panel-body list-group">
-	  	{{#each events}}
-		{{> news}}
+	  	{{#each newsitems}}
+		{{> news_item}}
 		{{/each}}
 	  </div>
 	</div>
@@ -38,25 +27,19 @@
 	{{else}}
 	<div class="alert alert-danger alert-dismissible" role="alert">
 	  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	  <i class="fa fa-info-circle red"></i> You must be logged in to create or view events!
+	  <i class="fa fa-info-circle red"></i> You must be logged in to create or view posts!
 	</div>
 	{{/if}}
 </template>
 
 <template name="news_item">
 	<div class="list-group-item">
-	<h5 class="list-group-item-heading">{{heading}}</h5>
-    <p class="list-group-item-text">{{info}}</p>
-    
+    <p class="list-group-item-text"><strong>{{who}}</strong> says: {{post}}</p>
     <p class="list-group-item-text details">
-    <i class="fa fa-user"></i> {{name}}&nbsp;&nbsp;
-    <i class="fa fa-map-marker"></i> {{location}}&nbsp;&nbsp;
-    <i class="fa fa-calendar"></i> {{when}}&nbsp;&nbsp;
-    <button type="button" id="attending" title="Click to attend!" class="btn btn-success btn-xs">{{attending_count}} <i class="fa fa-calendar-check-o"></i> Attending</button>&nbsp;&nbsp;
-    <button type="button" id="notattending" title="Click not to attend!" class="btn btn-danger btn-xs"><i class="fa fa-calendar-times-o"></i> Not Attending</button>&nbsp;&nbsp;
-    {{#if authorized}}
-    	<button type="button" id="delete" title="Delete Event!" class="btn btn-danger btn-xs pull-right"><i class="fa fa-trash-o"></i> Delete</button>
-    {{/if}}
+    	<i class="fa fa-calendar"></i> {{when}}
+	    {{#if authorized}}
+	    	<button type="button" id="delete" title="Delete Event!" class="btn btn-danger btn-xs pull-right"><i class="fa fa-trash-o"></i> Delete</button>
+	    {{/if}}
     </p>
   </div>
 </template>
