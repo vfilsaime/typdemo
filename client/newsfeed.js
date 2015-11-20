@@ -18,9 +18,14 @@ Template.newsPage.events({
 		};		
 		News.insert(news_item);
 	}
+
+
 });
 
 Template.newsPage.helpers({
+	likes: function(){
+		return this.likes.length;
+	},
 	newsitems: function(){
 		return News.find({},{sort:{when:-1}});
 	},
@@ -32,11 +37,28 @@ Template.newsPage.helpers({
 Template.news_item.helpers({
   	authorized: function(){
 	    return this.uid==Meteor.userId();
-	  }
+	  },
+	  numlikes: function(){
+	    return (this.likes)? this.likes.length: 0;
+	}
 });
 
 Template.news_item.events({
     "click #delete": function () {
     	News.remove(this._id);
+    },
+
+    "click #like": function () {
+      var likes = this.likes || [];
+      var index = likes.indexOf(Meteor.userId());
+      if (index < 0) {
+      	likes.push(Meteor.userId());
+      }
+
+      News.update(this._id, {
+  		$set: {likes:likes}
+  	  });
     }
+
+
 });

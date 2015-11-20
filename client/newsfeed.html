@@ -36,8 +36,10 @@
 	<div class="list-group-item">
     <p class="list-group-item-text"><strong>{{who}}</strong> says: {{post}}</p>
     <p class="list-group-item-text details">
-    	<i class="fa fa-calendar"></i> {{when}}
-	    {{#if authorized}}
+    <i class="fa fa-calendar"></i> {{when}}	
+    <button type="button" id="like" title="Click to like post!" class="btn btn-success btn-xs">{{numlikes}} <i class="fa fa-thumbs-up"></i></button> 
+	
+	{{#if authorized}}
 	    	<button type="button" id="delete" title="Delete Event!" class="btn btn-danger btn-xs pull-right"><i class="fa fa-trash-o"></i> Delete</button>
 	    {{/if}}
     </p>
